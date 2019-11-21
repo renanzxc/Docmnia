@@ -1,13 +1,9 @@
 import json
 import ast
-# import requests
 import sys
 import argparse
-# from string import Template 
 import os
 from jinja2 import Template
-# req = requests.get("url")
-# route["sampleResponse"] = req.content.decode('utf-8')
 
 def getData(resources):
     routes = []
@@ -71,7 +67,6 @@ def getData(resources):
                         route["methods"].append(methodData)
                         folder["routes"].append(route)
 
-    #print(folders)
     return workspace, folders, varsEnv
 
 def generateYAML(workspace, folders, varsEnv):
@@ -81,8 +76,6 @@ def generateYAML(workspace, folders, varsEnv):
     baseT = Template(base, trim_blocks= True, lstrip_blocks= True)
 
     final = baseT.render(workspace = workspace, folders = folders, varsEnv = varsEnv)
-
-    #print(final)
 
     f = open("test.yaml", "w")
     f.write(final)
