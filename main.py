@@ -69,7 +69,7 @@ def getData(resources):
 
     return workspace, folders, varsEnv
 
-def generateYAML(workspace, folders, varsEnv):
+def yaml(workspace, folders, varsEnv):
     with open(os.path.dirname(os.path.abspath(__file__))+"/templates/base.yaml") as file:  
         base = file.read() 
     
@@ -77,7 +77,7 @@ def generateYAML(workspace, folders, varsEnv):
 
     final = baseT.render(workspace = workspace, folders = folders, varsEnv = varsEnv)
 
-    f = open("test.yaml", "w")
+    f = open(workspace["name"]+"Doc.yaml", "w")
     f.write(final)
     f.close()
 
@@ -94,5 +94,5 @@ if __name__ == "__main__":
 
     workspace, folders, varsEnv = getData(resources)
 
-    if("yaml" in args.o): 
-        generateYAML(workspace, folders, varsEnv)
+    generate = globals()[args.o] #Get reference to function
+    generate(workspace, folders, varsEnv) #Call function
