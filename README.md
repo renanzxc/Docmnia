@@ -1,6 +1,15 @@
 # Docmnia
 Documentation generator for Insomnia API. 🐍
 
+## Dependencies
+* Python 3.x
+  * Jinja2 
+```sh
+$ sudo apt-get install python3.6
+```
+```sh
+$ pip3 install jinja2
+```
 ## Command to run
 Inside the root folder execute:
 ```sh
